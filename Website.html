@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aiden | AI Executive Assistant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #D4AF37; /* Gold */
@@ -28,15 +27,12 @@
             background-color: var(--dark);
             color: var(--text-light);
             line-height: 1.6;
-            overflow-x: hidden;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
-            z-index: 1;
         }
         
         header {
@@ -44,53 +40,6 @@
             color: white;
             padding: 20px 0;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            position: relative;
-        }
-        
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, rgba(18, 18, 18, 0) 70%);
-            z-index: 0;
-        }
-        
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background-color: rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(20px);
-                opacity: 0;
-            }
         }
         
         nav {
@@ -108,22 +57,6 @@
             gap: 10px;
             color: var(--primary);
             letter-spacing: 1px;
-            position: relative;
-        }
-        
-        .logo::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.4s ease;
-        }
-        
-        .logo:hover::after {
-            width: 100%;
         }
         
         .logo-dot {
@@ -143,26 +76,10 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-size: 14px;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
         }
         
         .nav-links a:hover {
             color: var(--primary);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
         }
         
         .cta-button {
@@ -179,21 +96,6 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-size: 14px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-button::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
         }
         
         .cta-button:hover {
@@ -202,35 +104,15 @@
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
         
-        .cta-button:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
         .hero {
             padding: 100px 0 80px;
             text-align: center;
             background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-secondary) 100%);
-            position: relative;
-            overflow: hidden;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-            z-index: 0;
         }
         
         h1 {
@@ -240,19 +122,6 @@
             line-height: 1.2;
             letter-spacing: 1px;
             font-weight: 700;
-            opacity: 0;
-            animation: fadeUp 1s forwards 0.3s;
-        }
-        
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         h1 span {
@@ -264,18 +133,11 @@
             color: var(--text-light);
             margin-bottom: 50px;
             letter-spacing: 0.5px;
-            opacity: 0;
-            animation: fadeUp 1s forwards 0.6s;
         }
         
         .highlight {
             color: var(--primary);
             font-weight: 600;
-        }
-        
-        .hero .cta-button {
-            opacity: 0;
-            animation: fadeUp 1s forwards 0.9s;
         }
         
         .features {
@@ -303,14 +165,6 @@
             position: relative;
             display: inline-block;
             padding-bottom: 15px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s, transform 0.8s;
-        }
-        
-        .visible .section-title {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .section-title::after {
@@ -342,38 +196,6 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
             border: 1px solid rgba(212, 175, 55, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-        
-        .visible .feature-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .visible .feature-card:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-        
-        .visible .feature-card:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-        
-        .visible .feature-card:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-        
-        .visible .feature-card:nth-child(4) {
-            transition-delay: 0.4s;
-        }
-        
-        .visible .feature-card:nth-child(5) {
-            transition-delay: 0.5s;
-        }
-        
-        .visible .feature-card:nth-child(6) {
-            transition-delay: 0.6s;
         }
         
         .feature-card:hover {
@@ -383,23 +205,9 @@
         }
         
         .feature-icon {
-            font-size: 32px;
+            font-size: 42px;
             margin-bottom: 25px;
             color: var(--primary);
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.1);
-            margin-bottom: 25px;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover .feature-icon {
-            background: rgba(212, 175, 55, 0.2);
-            transform: scale(1.1);
         }
         
         .feature-title {
@@ -455,30 +263,6 @@
             display: flex;
             gap: 30px;
             align-items: flex-start;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.8s, transform 0.8s;
-        }
-        
-        .visible .step {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .visible .step:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-        
-        .visible .step:nth-child(2) {
-            transition-delay: 0.3s;
-        }
-        
-        .visible .step:nth-child(3) {
-            transition-delay: 0.5s;
-        }
-        
-        .visible .step:nth-child(4) {
-            transition-delay: 0.7s;
         }
         
         .step-number {
@@ -494,14 +278,6 @@
             font-weight: 700;
             flex-shrink: 0;
             box-shadow: 0 6px 12px rgba(212, 175, 55, 0.2);
-            position: relative;
-            z-index: 1;
-            transition: all 0.3s ease;
-        }
-        
-        .step:hover .step-number {
-            transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
         }
         
         .step-content {
@@ -510,13 +286,6 @@
             padding: 30px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        .step:hover .step-content {
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
         
         .step-title {
@@ -560,26 +329,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-        
-        .visible .audience-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .visible .audience-card:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-        
-        .visible .audience-card:nth-child(2) {
-            transition-delay: 0.3s;
-        }
-        
-        .visible .audience-card:nth-child(3) {
-            transition-delay: 0.5s;
         }
         
         .audience-card:hover {
@@ -589,22 +338,9 @@
         }
         
         .audience-icon {
-            font-size: 36px;
+            font-size: 48px;
             color: var(--primary);
             margin-bottom: 25px;
-            width: 90px;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .audience-card:hover .audience-icon {
-            background: rgba(212, 175, 55, 0.2);
-            transform: scale(1.1);
         }
         
         .audience-title {
@@ -622,31 +358,6 @@
             position: relative;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            overflow: hidden;
-        }
-        
-        .privacy-banner::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-            z-index: 0;
-        }
-        
-        .privacy-banner-content {
-            position: relative;
-            z-index: 1;
-            opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 0.8s, transform 0.8s;
-        }
-        
-        .visible .privacy-banner-content {
-            opacity: 1;
-            transform: scale(1);
         }
         
         .privacy-title {
@@ -657,17 +368,9 @@
         }
         
         .privacy-icon {
-            font-size: 48px;
+            font-size: 60px;
             margin-bottom: 30px;
             color: var(--primary);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(212, 175, 55, 0.1);
-            margin: 0 auto 30px;
         }
         
         .privacy-description {
@@ -682,7 +385,6 @@
             color: white;
             padding: 60px 0 40px;
             text-align: center;
-            position: relative;
         }
         
         .footer-links {
@@ -699,26 +401,10 @@
             text-transform: uppercase;
             font-size: 14px;
             letter-spacing: 1px;
-            position: relative;
-        }
-        
-        .footer-links a::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
         }
         
         .footer-links a:hover {
             color: var(--primary);
-        }
-        
-        .footer-links a:hover::after {
-            width: 100%;
         }
         
         .copyright {
@@ -760,8 +446,6 @@
 </head>
 <body>
     <header>
-        <div class="background-animation"></div>
-        <div class="particles" id="particles"></div>
         <div class="container">
             <nav>
                 <div class="logo">
@@ -786,59 +470,47 @@
     </header>
     
     <section class="features" id="features">
-        <div class="container section-wrapper">
+        <div class="container">
             <div class="title-container">
                 <h2 class="section-title">Powerful Features</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
+                    <div class="feature-icon">📧</div>
                     <h3 class="feature-title">Email Summarization</h3>
                     <p class="feature-description">Quickly extract key points from long emails and keep your inbox organized.</p>
                     <span class="tech-badge">NLTagger</span>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
+                    <div class="feature-icon">🎙️</div>
                     <h3 class="feature-title">Voice Commands</h3>
                     <p class="feature-description">Hands-free scheduling, reminders, and notes for executives on the go.</p>
                     <span class="tech-badge">SFSpeechRecognizer</span>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tasks"></i>
-                    </div>
+                    <div class="feature-icon">✅</div>
                     <h3 class="feature-title">Smart Task Management</h3>
                     <p class="feature-description">Automatically track important tasks & deadlines with AI-powered prioritization.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="far fa-calendar-alt"></i>
-                    </div>
+                    <div class="feature-icon">📅</div>
                     <h3 class="feature-title">Calendar Integration</h3>
                     <p class="feature-description">Easily schedule meetings & events with intelligent time management.</p>
                     <span class="tech-badge">EventKit</span>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
+                    <div class="feature-icon">📑</div>
                     <h3 class="feature-title">OCR for Documents</h3>
                     <p class="feature-description">Scan & extract text from images or paper documents instantly.</p>
                     <span class="tech-badge">VNRecognizeTextRequest</span>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sort-amount-up-alt"></i>
-                    </div>
+                    <div class="feature-icon">🔍</div>
                     <h3 class="feature-title">Email Priority Detection</h3>
                     <p class="feature-description">AI-powered sorting of urgent emails so you never miss critical messages.</p>
                     <span class="tech-badge">Core ML Sentiment Analysis</span>
@@ -848,7 +520,7 @@
     </section>
     
     <section class="how-it-works" id="how-it-works">
-        <div class="container section-wrapper">
+        <div class="container">
             <div class="title-container">
                 <h2 class="section-title">How It Works</h2>
             </div>
@@ -889,27 +561,55 @@
     </section>
     
     <div class="privacy-banner">
-        <div class="container section-wrapper">
-            <div class="privacy-banner-content">
-                <div class="privacy-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h2 class="privacy-title">100% On-Device Processing</h2>
-                <p class="privacy-description">Everything runs entirely on your device, ensuring maximum privacy & speed.</p>
-                <p class="privacy-description">No data is ever sent to external servers or cloud-based AI.</p>
-            </div>
+        <div class="container">
+            <div class="privacy-icon">🔒</div>
+            <h2 class="privacy-title">100% On-Device Processing</h2>
+            <p class="privacy-description">Everything runs entirely on your device, ensuring maximum privacy & speed.</p>
+            <p class="privacy-description">No data is ever sent to external servers or cloud-based AI.</p>
         </div>
     </div>
     
     <section class="audience" id="audience">
-        <div class="container section-wrapper">
+        <div class="container">
             <div class="title-container">
                 <h2 class="section-title">Who Is It For?</h2>
             </div>
             <div class="audience-cards">
                 <div class="audience-card">
-                    <div class="audience-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
+                    <div class="audience-icon">👔</div>
                     <h3 class="audience-title">CEOs & Executives</h3>
                     <p>Who need a smarter, faster way to manage tasks and communications while maintaining security.</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">💼</div>
+                    <h3 class="audience-title">Busy Professionals</h3>
+                    <p>Who handle tons of emails & meetings and need an intelligent assistant to stay organized.</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">🔐</div>
+                    <h3 class="audience-title">Privacy-Conscious Users</h3>
+                    <p>Anyone who values productivity & privacy and wants AI assistance without cloud dependencies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="logo">
+                AIDEN<span class="logo-dot">.</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">Support</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p class="copyright">© 2025 Aiden AI. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
