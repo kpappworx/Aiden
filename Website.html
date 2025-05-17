@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aiden | AI Executive Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         :root {
             --primary: #D4AF37; /* Gold */
@@ -20,7 +22,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'SF Pro Display', 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -40,6 +42,11 @@
             color: white;
             padding: 20px 0;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         nav {
@@ -76,6 +83,22 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-size: 14px;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
         
         .nav-links a:hover {
@@ -87,7 +110,7 @@
             color: var(--dark);
             border: none;
             padding: 12px 28px;
-            border-radius: 4px;
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -96,23 +119,39 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-size: 14px;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
         }
         
         .cta-button:hover {
             background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
         
         .hero {
             padding: 100px 0 80px;
             text-align: center;
             background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 1;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         h1 {
@@ -126,6 +165,18 @@
         
         h1 span {
             color: var(--primary);
+            position: relative;
+        }
+        
+        h1 span::after {
+            content: "";
+            position: absolute;
+            height: 8px;
+            bottom: 8px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(212, 175, 55, 0.2);
+            z-index: -1;
         }
         
         .tagline {
@@ -191,11 +242,29 @@
         
         .feature-card {
             background-color: rgba(30, 30, 30, 0.6);
-            border-radius: 8px;
+            border-radius: 16px;
             padding: 40px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
             border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-dark), var(--primary), var(--primary-light));
+            transform: translateY(-4px);
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: translateY(0);
         }
         
         .feature-card:hover {
@@ -208,6 +277,20 @@
             font-size: 42px;
             margin-bottom: 25px;
             color: var(--primary);
+            background: rgba(212, 175, 55, 0.1);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
         }
         
         .feature-title {
@@ -229,10 +312,15 @@
             background-color: rgba(212, 175, 55, 0.15);
             color: var(--primary);
             padding: 6px 12px;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .tech-badge {
+            background-color: rgba(212, 175, 55, 0.25);
         }
         
         .how-it-works {
@@ -266,7 +354,7 @@
         }
         
         .step-number {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             color: var(--dark);
             width: 60px;
             height: 60px;
@@ -278,14 +366,31 @@
             font-weight: 700;
             flex-shrink: 0;
             box-shadow: 0 6px 12px rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
         
         .step-content {
             background-color: rgba(30, 30, 30, 0.6);
-            border-radius: 8px;
+            border-radius: 16px;
             padding: 30px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 0;
+        }
+        
+        .step:hover .step-content {
+            transform: translateX(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
         
         .step-title {
@@ -319,7 +424,7 @@
         
         .audience-card {
             background-color: rgba(30, 30, 30, 0.6);
-            border-radius: 8px;
+            border-radius: 16px;
             padding: 40px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -329,6 +434,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .audience-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-dark), var(--primary), var(--primary-light));
+            transform: translateY(4px);
+            transition: transform 0.4s ease;
+        }
+        
+        .audience-card:hover::after {
+            transform: translateY(0);
         }
         
         .audience-card:hover {
@@ -341,6 +464,20 @@
             font-size: 48px;
             color: var(--primary);
             margin-bottom: 25px;
+            background: rgba(212, 175, 55, 0.1);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .audience-card:hover .audience-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
         }
         
         .audience-title {
@@ -371,6 +508,20 @@
             font-size: 60px;
             margin-bottom: 30px;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            margin: 0 auto 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .privacy-banner:hover .privacy-icon {
+            transform: scale(1.1) rotate(10deg);
         }
         
         .privacy-description {
@@ -411,6 +562,56 @@
             color: var(--gray);
             font-size: 14px;
             margin-top: 30px;
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+        }
+        
+        .fade-in-right {
+            animation: fadeInRight 1s ease forwards;
+            opacity: 0;
+        }
+        
+        .fade-in-left {
+            animation: fadeInLeft 1s ease forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Scroll animations */
+        .animate__animated {
+            visibility: hidden;
+        }
+        
+        .animate__animated.animate__fadeIn {
+            --animate-duration: 1s;
         }
         
         @media (max-width: 768px) {
@@ -461,9 +662,9 @@
             
             <div class="hero">
                 <div class="hero-content">
-                    <h1><span>Aiden</span>: Your AI Executive Assistant</h1>
-                    <p class="tagline">A <span class="highlight">privacy-focused, on-device AI</span> designed to help executives save time and boost productivity</p>
-                    <a href="#" class="cta-button">Get Started Free</a>
+                    <h1 class="animate__animated animate__fadeIn"><span>Aiden</span>: Your AI Executive Assistant</h1>
+                    <p class="tagline animate__animated animate__fadeIn">A <span class="highlight">privacy-focused, on-device AI</span> designed for startup founders, busy professionals, and executives</p>
+                    <a href="#" class="cta-button animate__animated animate__fadeInUp">Get Started Free</a>
                 </div>
             </div>
         </div>
@@ -472,48 +673,64 @@
     <section class="features" id="features">
         <div class="container">
             <div class="title-container">
-                <h2 class="section-title">Powerful Features</h2>
+                <h2 class="section-title animate__animated animate__fadeIn">Powerful Features</h2>
             </div>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📧</div>
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon"><i class="fas fa-inbox"></i></div>
                     <h3 class="feature-title">Email Summarization</h3>
-                    <p class="feature-description">Quickly extract key points from long emails and keep your inbox organized.</p>
+                    <p class="feature-description">Quickly extract key points from long emails and keep your inbox organized with AI-powered sorting of urgent messages.</p>
                     <span class="tech-badge">NLTagger</span>
+                    <span class="tech-badge">Core ML</span>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">🎙️</div>
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon"><i class="fas fa-microphone-alt"></i></div>
                     <h3 class="feature-title">Voice Commands</h3>
-                    <p class="feature-description">Hands-free scheduling, reminders, and notes for executives on the go.</p>
+                    <p class="feature-description">Hands-free scheduling, reminders, and notes for executives on the go with advanced speech recognition.</p>
                     <span class="tech-badge">SFSpeechRecognizer</span>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">✅</div>
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon"><i class="fas fa-tasks"></i></div>
                     <h3 class="feature-title">Smart Task Management</h3>
-                    <p class="feature-description">Automatically track important tasks & deadlines with AI-powered prioritization.</p>
+                    <p class="feature-description">Automatically track important tasks & deadlines with AI-powered prioritization based on your patterns.</p>
+                    <span class="tech-badge">Core ML</span>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">📅</div>
-                    <h3 class="feature-title">Calendar Integration</h3>
-                    <p class="feature-description">Easily schedule meetings & events with intelligent time management.</p>
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon"><i class="far fa-calendar-alt"></i></div>
+                    <h3 class="feature-title">Intelligent Calendar</h3>
+                    <p class="feature-description">Automatically organizes meetings and suggests optimal time slots based on your preferences and patterns.</p>
                     <span class="tech-badge">EventKit</span>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">📑</div>
-                    <h3 class="feature-title">OCR for Documents</h3>
-                    <p class="feature-description">Scan & extract text from images or paper documents instantly.</p>
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3 class="feature-title">Document Intelligence</h3>
+                    <p class="feature-description">Summarize meeting notes, PDFs, business documents and scan text from paper documents instantly.</p>
                     <span class="tech-badge">VNRecognizeTextRequest</span>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3 class="feature-title">Email Priority Detection</h3>
-                    <p class="feature-description">AI-powered sorting of urgent emails so you never miss critical messages.</p>
-                    <span class="tech-badge">Core ML Sentiment Analysis</span>
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                    <h3 class="feature-title">Contextual Reminders</h3>
+                    <p class="feature-description">Get smart reminders based on location, time, or ongoing projects — intelligently triggered by context.</p>
+                    <span class="tech-badge">Core Location</span>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3 class="feature-title">Project Management</h3>
+                    <p class="feature-description">Create, track, and manage ongoing projects with intelligent prioritization and daily briefings.</p>
+                    <span class="tech-badge">Core Data</span>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3 class="feature-title">Face Recognition Security</h3>
+                    <p class="feature-description">Sensitive features are secured with biometric facial recognition for an extra layer of protection.</p>
+                    <span class="tech-badge">Face ID API</span>
                 </div>
             </div>
         </div>
@@ -522,26 +739,26 @@
     <section class="how-it-works" id="how-it-works">
         <div class="container">
             <div class="title-container">
-                <h2 class="section-title">How It Works</h2>
+                <h2 class="section-title animate__animated animate__fadeIn">How It Works</h2>
             </div>
             <div class="steps">
-                <div class="step">
+                <div class="step animate__animated animate__fadeInLeft">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h3 class="step-title">Summarize emails & meetings in one tap</h3>
-                        <p>Aiden automatically identifies key points and action items from your communications, saving you valuable time.</p>
+                        <h3 class="step-title">Summarize emails & documents in one tap</h3>
+                        <p>Aiden automatically identifies key points and action items from your communications and documents, saving you valuable time.</p>
                     </div>
                 </div>
                 
-                <div class="step">
+                <div class="step animate__animated animate__fadeInRight">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3 class="step-title">Get voice-controlled insights about your schedule</h3>
-                        <p>Simply ask Aiden about your day, upcoming meetings, or to set reminders without touching your device.</p>
+                        <p>Simply ask Aiden about your day, upcoming meetings, or to set reminders without touching your device – even when offline.</p>
                     </div>
                 </div>
                 
-                <div class="step">
+                <div class="step animate__animated animate__fadeInLeft">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3 class="step-title">Scan & digitize important documents instantly</h3>
@@ -549,11 +766,11 @@
                     </div>
                 </div>
                 
-                <div class="step">
+                <div class="step animate__animated animate__fadeInRight">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <h3 class="step-title">Automate follow-ups & reminders without extra effort</h3>
-                        <p>Aiden detects commitments made in emails and meetings, then creates appropriate follow-up tasks automatically.</p>
+                        <h3 class="step-title">Automate follow-ups & context-aware reminders</h3>
+                        <p>Aiden detects commitments in communications and creates location or time-based reminders that trigger intelligently by context.</p>
                     </div>
                 </div>
             </div>
@@ -562,35 +779,35 @@
     
     <div class="privacy-banner">
         <div class="container">
-            <div class="privacy-icon">🔒</div>
-            <h2 class="privacy-title">100% On-Device Processing</h2>
-            <p class="privacy-description">Everything runs entirely on your device, ensuring maximum privacy & speed.</p>
-            <p class="privacy-description">No data is ever sent to external servers or cloud-based AI.</p>
+            <div class="privacy-icon animate__animated animate__fadeIn"><i class="fas fa-shield-alt"></i></div>
+            <h2 class="privacy-title animate__animated animate__fadeIn">100% On-Device Intelligence</h2>
+            <p class="privacy-description animate__animated animate__fadeIn">Everything runs entirely using Core ML on your iPhone/iPad, ensuring maximum privacy & speed.</p>
+            <p class="privacy-description animate__animated animate__fadeIn">No data is ever sent to external servers – your sensitive business data never leaves your device.</p>
         </div>
     </div>
     
     <section class="audience" id="audience">
         <div class="container">
             <div class="title-container">
-                <h2 class="section-title">Who Is It For?</h2>
+                <h2 class="section-title animate__animated animate__fadeIn">Who Is It For?</h2>
             </div>
             <div class="audience-cards">
-                <div class="audience-card">
-                    <div class="audience-icon">👔</div>
+                <div class="audience-card animate__animated animate__fadeInUp">
+                    <div class="audience-icon"><i class="fas fa-user-tie"></i></div>
                     <h3 class="audience-title">CEOs & Executives</h3>
-                    <p>Who need a smarter, faster way to manage tasks and communications while maintaining security.</p>
+                    <p>Who need a smarter, faster way to manage tasks and communications while maintaining the highest levels of data security.</p>
                 </div>
                 
-                <div class="audience-card">
-                    <div class="audience-icon">💼</div>
-                    <h3 class="audience-title">Busy Professionals</h3>
-                    <p>Who handle tons of emails & meetings and need an intelligent assistant to stay organized.</p>
+                <div class="audience-card animate__animated animate__fadeInUp">
+                    <div class="audience-icon"><i class="fas fa-rocket"></i></div>
+                    <h3 class="audience-title">Startup Founders</h3>
+                    <p>Who juggle multiple roles and need an intelligent assistant to stay organized and make smarter decisions quickly.</p>
                 </div>
                 
-                <div class="audience-card">
-                    <div class="audience-icon">🔐</div>
-                    <h3 class="audience-title">Privacy-Conscious Users</h3>
-                    <p>Anyone who values productivity & privacy and wants AI assistance without cloud dependencies.</p>
+                <div class="audience-card animate__animated animate__fadeInUp">
+                    <div class="audience-icon"><i class="fas fa-lock"></i></div>
+                    <h3 class="audience-title">Privacy-Conscious Professionals</h3>
+                    <p>Anyone who values productivity & privacy and wants AI assistance that works even when offline, with no network dependencies.</p>
                 </div>
             </div>
         </div>
@@ -599,17 +816,4 @@
     <footer>
         <div class="container">
             <div class="logo">
-                AIDEN<span class="logo-dot">.</span>
-            </div>
-            <div class="footer-links">
-                <a href="#">Features</a>
-                <a href="#">Pricing</a>
-                <a href="#">Support</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-            <p class="copyright">© 2025 Aiden AI. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
+                
