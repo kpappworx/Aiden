@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aiden | AI Executive Assistant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Aiden | Your Private, Offline Productivity Assistant</title>
     <style>
         :root {
             --primary: #D4AF37; /* Gold */
@@ -22,7 +20,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'SF Pro Display', 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, sans-serif;
         }
         
         body {
@@ -42,11 +40,6 @@
             color: white;
             padding: 20px 0;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
         
         nav {
@@ -83,22 +76,6 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-size: 14px;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
         }
         
         .nav-links a:hover {
@@ -132,26 +109,11 @@
             padding: 100px 0 80px;
             text-align: center;
             background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-secondary) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-            z-index: 1;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
         
         h1 {
@@ -165,18 +127,6 @@
         
         h1 span {
             color: var(--primary);
-            position: relative;
-        }
-        
-        h1 span::after {
-            content: "";
-            position: absolute;
-            height: 8px;
-            bottom: 8px;
-            left: 0;
-            width: 100%;
-            background-color: rgba(212, 175, 55, 0.2);
-            z-index: -1;
         }
         
         .tagline {
@@ -191,20 +141,26 @@
             font-weight: 600;
         }
         
+        .price-tag {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .price-tag .original {
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-left: 10px;
+            font-size: 0.9em;
+        }
+        
         .features {
             padding: 100px 0;
             background-color: var(--dark-secondary);
-            position: relative;
-        }
-        
-        .features::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(to right, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.5) 50%, rgba(212, 175, 55, 0) 100%);
         }
         
         .section-title {
@@ -213,30 +169,11 @@
             margin-bottom: 80px;
             color: var(--primary);
             letter-spacing: 1px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-        
-        .title-container {
-            text-align: center;
-            margin-bottom: 80px;
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
         
@@ -245,26 +182,8 @@
             border-radius: 16px;
             padding: 40px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             border: 1px solid rgba(212, 175, 55, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-dark), var(--primary), var(--primary-light));
-            transform: translateY(-4px);
-            transition: transform 0.4s ease;
-        }
-        
-        .feature-card:hover::before {
-            transform: translateY(0);
         }
         
         .feature-card:hover {
@@ -277,20 +196,6 @@
             font-size: 42px;
             margin-bottom: 25px;
             color: var(--primary);
-            background: rgba(212, 175, 55, 0.1);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
         }
         
         .feature-title {
@@ -307,194 +212,11 @@
             line-height: 1.7;
         }
         
-        .tech-badge {
-            display: inline-block;
-            background-color: rgba(212, 175, 55, 0.15);
-            color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover .tech-badge {
-            background-color: rgba(212, 175, 55, 0.25);
-        }
-        
-        .how-it-works {
-            background-color: var(--dark);
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        .how-it-works::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(to right, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.5) 50%, rgba(212, 175, 55, 0) 100%);
-        }
-        
-        .steps {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .step {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-        }
-        
-        .step-number {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: var(--dark);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 700;
-            flex-shrink: 0;
-            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .step:hover .step-number {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        .step-content {
-            background-color: rgba(30, 30, 30, 0.6);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 0;
-        }
-        
-        .step:hover .step-content {
-            transform: translateX(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .step-title {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--primary);
-            letter-spacing: 0.5px;
-        }
-        
-        .audience {
-            padding: 100px 0;
-            background-color: var(--dark-secondary);
-            position: relative;
-        }
-        
-        .audience::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(to right, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.5) 50%, rgba(212, 175, 55, 0) 100%);
-        }
-        
-        .audience-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .audience-card {
-            background-color: rgba(30, 30, 30, 0.6);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .audience-card::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-dark), var(--primary), var(--primary-light));
-            transform: translateY(4px);
-            transition: transform 0.4s ease;
-        }
-        
-        .audience-card:hover::after {
-            transform: translateY(0);
-        }
-        
-        .audience-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        
-        .audience-icon {
-            font-size: 48px;
-            color: var(--primary);
-            margin-bottom: 25px;
-            background: rgba(212, 175, 55, 0.1);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .audience-card:hover .audience-icon {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
-        }
-        
-        .audience-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: white;
-            letter-spacing: 0.5px;
-        }
-        
         .privacy-banner {
             background: linear-gradient(135deg, #121212 0%, #252525 100%);
             color: white;
             padding: 80px 0;
             text-align: center;
-            position: relative;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .privacy-title {
@@ -508,20 +230,6 @@
             font-size: 60px;
             margin-bottom: 30px;
             color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.1);
-            margin: 0 auto 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-        }
-        
-        .privacy-banner:hover .privacy-icon {
-            transform: scale(1.1) rotate(10deg);
         }
         
         .privacy-description {
@@ -529,6 +237,25 @@
             max-width: 700px;
             margin: 0 auto 20px;
             line-height: 1.8;
+        }
+        
+        .early-access {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--dark);
+        }
+        
+        .early-access h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .early-access p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: var(--gray);
         }
         
         footer {
@@ -564,56 +291,6 @@
             margin-top: 30px;
         }
         
-        /* Animation classes */
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
-            opacity: 0;
-        }
-        
-        .fade-in-up {
-            animation: fadeInUp 1s ease forwards;
-            opacity: 0;
-        }
-        
-        .fade-in-right {
-            animation: fadeInRight 1s ease forwards;
-            opacity: 0;
-        }
-        
-        .fade-in-left {
-            animation: fadeInLeft 1s ease forwards;
-            opacity: 0;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        /* Scroll animations */
-        .animate__animated {
-            visibility: hidden;
-        }
-        
-        .animate__animated.animate__fadeIn {
-            --animate-duration: 1s;
-        }
-        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -631,15 +308,7 @@
                 font-size: 32px;
             }
             
-            .step {
-                flex-direction: column;
-            }
-            
-            .step-number {
-                margin-bottom: 15px;
-            }
-            
-            .features-grid, .audience-cards {
+            .features-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -653,167 +322,86 @@
                     AIDEN<span class="logo-dot">.</span>
                 </div>
                 <div class="nav-links">
-                    <a href="#features">Features</a>
-                    <a href="#how-it-works">How It Works</a>
-                    <a href="#audience">Who It's For</a>
+                    <a href="#early-access">Early Access</a>
+                    <a href="https://kpappworx.github.io/Aiden/privacypolicy.html">Privacy</a>
+                    <a href="https://kpappworx.github.io/Aiden/support.html">Support</a>
                 </div>
-                <a href="#" class="cta-button">Download Now</a>
+                <a href="https://apps.apple.com/in/app/aiden-ai/id6745358011" class="cta-button">Download Now</a>
             </nav>
-            
-            <div class="hero">
-                <div class="hero-content">
-                    <h1 class="animate__animated animate__fadeIn"><span>Aiden</span>: Your AI Executive Assistant</h1>
-                    <p class="tagline animate__animated animate__fadeIn">A <span class="highlight">privacy-focused, on-device AI</span> designed for startup founders, busy professionals, and executives</p>
-                    <a href="#" class="cta-button animate__animated animate__fadeInUp">Get Started Free</a>
-                </div>
-            </div>
         </div>
     </header>
     
-    <section class="features" id="features">
+    <div class="hero">
         <div class="container">
-            <div class="title-container">
-                <h2 class="section-title animate__animated animate__fadeIn">Powerful Features</h2>
+            <div class="hero-content">
+                <h1><span>Aiden</span>: Your Private, Offline Productivity Assistant</h1>
+                <p class="tagline">A <span class="highlight">fully offline, on-device assistant</span> that helps you organize and stay on top of your day without relying on the cloud</p>
+                <div class="price-tag">Early Access: $29.99 <span class="original">$49.99</span></div>
+                <a href="https://apps.apple.com/in/app/aiden-ai/id6745358011" class="cta-button">Get Early Access</a>
             </div>
-            <div class="features-grid">
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon"><i class="fas fa-inbox"></i></div>
-                    <h3 class="feature-title">Email Summarization</h3>
-                    <p class="feature-description">Quickly extract key points from long emails and keep your inbox organized with AI-powered sorting of urgent messages.</p>
-                    <span class="tech-badge">NLTagger</span>
-                    <span class="tech-badge">Core ML</span>
-                </div>
-                
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon"><i class="fas fa-microphone-alt"></i></div>
-                    <h3 class="feature-title">Voice Commands</h3>
-                    <p class="feature-description">Hands-free scheduling, reminders, and notes for executives on the go with advanced speech recognition.</p>
-                    <span class="tech-badge">SFSpeechRecognizer</span>
-                </div>
-                
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon"><i class="fas fa-tasks"></i></div>
-                    <h3 class="feature-title">Smart Task Management</h3>
-                    <p class="feature-description">Automatically track important tasks & deadlines with AI-powered prioritization based on your patterns.</p>
-                    <span class="tech-badge">Core ML</span>
-                </div>
-                
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon"><i class="far fa-calendar-alt"></i></div>
-                    <h3 class="feature-title">Intelligent Calendar</h3>
-                    <p class="feature-description">Automatically organizes meetings and suggests optimal time slots based on your preferences and patterns.</p>
-                    <span class="tech-badge">EventKit</span>
-                </div>
-                
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3 class="feature-title">Document Intelligence</h3>
-                    <p class="feature-description">Summarize meeting notes, PDFs, business documents and scan text from paper documents instantly.</p>
-                    <span class="tech-badge">VNRecognizeTextRequest</span>
-                </div>
-                
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
-                    <h3 class="feature-title">Contextual Reminders</h3>
-                    <p class="feature-description">Get smart reminders based on location, time, or ongoing projects — intelligently triggered by context.</p>
-                    <span class="tech-badge">Core Location</span>
-                </div>
-                
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon"><i class="fas fa-project-diagram"></i></div>
-                    <h3 class="feature-title">Project Management</h3>
-                    <p class="feature-description">Create, track, and manage ongoing projects with intelligent prioritization and daily briefings.</p>
-                    <span class="tech-badge">Core Data</span>
-                </div>
-                
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
-                    <h3 class="feature-title">Face Recognition Security</h3>
-                    <p class="feature-description">Sensitive features are secured with biometric facial recognition for an extra layer of protection.</p>
-                    <span class="tech-badge">Face ID API</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="title-container">
-                <h2 class="section-title animate__animated animate__fadeIn">How It Works</h2>
-            </div>
-            <div class="steps">
-                <div class="step animate__animated animate__fadeInLeft">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Summarize emails & documents in one tap</h3>
-                        <p>Aiden automatically identifies key points and action items from your communications and documents, saving you valuable time.</p>
-                    </div>
-                </div>
-                
-                <div class="step animate__animated animate__fadeInRight">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Get voice-controlled insights about your schedule</h3>
-                        <p>Simply ask Aiden about your day, upcoming meetings, or to set reminders without touching your device – even when offline.</p>
-                    </div>
-                </div>
-                
-                <div class="step animate__animated animate__fadeInLeft">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Scan & digitize important documents instantly</h3>
-                        <p>Use your camera to capture text from business cards, receipts, whiteboards, and more - Aiden makes it searchable and organized.</p>
-                    </div>
-                </div>
-                
-                <div class="step animate__animated animate__fadeInRight">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Automate follow-ups & context-aware reminders</h3>
-                        <p>Aiden detects commitments in communications and creates location or time-based reminders that trigger intelligently by context.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <div class="privacy-banner">
-        <div class="container">
-            <div class="privacy-icon animate__animated animate__fadeIn"><i class="fas fa-shield-alt"></i></div>
-            <h2 class="privacy-title animate__animated animate__fadeIn">100% On-Device Intelligence</h2>
-            <p class="privacy-description animate__animated animate__fadeIn">Everything runs entirely using Core ML on your iPhone/iPad, ensuring maximum privacy & speed.</p>
-            <p class="privacy-description animate__animated animate__fadeIn">No data is ever sent to external servers – your sensitive business data never leaves your device.</p>
         </div>
     </div>
     
-    <section class="audience" id="audience">
+    <section class="features" id="features">
         <div class="container">
-            <div class="title-container">
-                <h2 class="section-title animate__animated animate__fadeIn">Who Is It For?</h2>
-            </div>
-            <div class="audience-cards">
-                <div class="audience-card animate__animated animate__fadeInUp">
-                    <div class="audience-icon"><i class="fas fa-user-tie"></i></div>
-                    <h3 class="audience-title">CEOs & Executives</h3>
-                    <p>Who need a smarter, faster way to manage tasks and communications while maintaining the highest levels of data security.</p>
+            <h2 class="section-title">Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗓️</div>
+                    <h3 class="feature-title">Smart Task Management</h3>
+                    <p class="feature-description">Manage tasks, reminders, and meetings effortlessly with AI-powered organization and prioritization.</p>
                 </div>
                 
-                <div class="audience-card animate__animated animate__fadeInUp">
-                    <div class="audience-icon"><i class="fas fa-rocket"></i></div>
-                    <h3 class="audience-title">Startup Founders</h3>
-                    <p>Who juggle multiple roles and need an intelligent assistant to stay organized and make smarter decisions quickly.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🗒️</div>
+                    <h3 class="feature-title">Intelligent Notes</h3>
+                    <p class="feature-description">Organize notes with AI-powered structure to quickly find and retrieve important information.</p>
                 </div>
                 
-                <div class="audience-card animate__animated animate__fadeInUp">
-                    <div class="audience-icon"><i class="fas fa-lock"></i></div>
-                    <h3 class="audience-title">Privacy-Conscious Professionals</h3>
-                    <p>Anyone who values productivity & privacy and wants AI assistance that works even when offline, with no network dependencies.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3 class="feature-title">Complete Privacy</h3>
+                    <p class="feature-description">Keep everything private — no cloud sync, just on-device with Face ID protection for sensitive information.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Offline Productivity</h3>
+                    <p class="feature-description">Stay productive even offline — no internet required for any functionality. Work anywhere, anytime.</p>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <div class="privacy-banner" id="privacy">
+        <div class="container">
+            <div class="privacy-icon">🔒</div>
+            <h2 class="privacy-title">100% On-Device Processing</h2>
+            <p class="privacy-description">Everything runs entirely on your device, ensuring maximum privacy & speed.</p>
+            <p class="privacy-description">No data is ever sent to external servers or cloud-based AI.</p>
+            <a href="https://kpappworx.github.io/Aiden/privacypolicy.html" class="cta-button">Read Privacy Policy</a>
+        </div>
+    </div>
+    
+    <section class="early-access" id="early-access">
+        <div class="container">
+            <h2>Limited Time Early Access</h2>
+            <p>Early access is now open for a one-time purchase of $29.99. The price will increase to $49.99 once it launches publicly.</p>
+            <a href="https://apps.apple.com/in/app/aiden-ai/id6745358011" class="cta-button">Get Started Now</a>
         </div>
     </section>
     
     <footer>
         <div class="container">
             <div class="logo">
-                
+                AIDEN<span class="logo-dot">.</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://kpappworx.github.io/Aiden/privacypolicy.html">Privacy</a>
+                <a href="https://kpappworx.github.io/Aiden/support.html">Support</a>
+            </div>
+            <p class="copyright">© 2025 Aiden AI by Kanthipriya (KP). All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
