@@ -5,7 +5,313 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Aiden | Your Private, Offline Productivity Assistant</title>
     <style>
-        /* ... (same CSS as your original, omitted here for brevity) ... */
+        :root {
+            --primary: #D4AF37; /* Gold */
+            --primary-light: #F4CE6A;
+            --primary-dark: #A6841C;
+            --dark: #121212; /* Near black */
+            --dark-secondary: #1E1E1E;
+            --light: #F8F8F8;
+            --gray: #888888;
+            --text-light: #EEEEEE;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        .logo-dot {
+            color: #FFFFFF;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-secondary) 100%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 54px;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        h1 span {
+            color: var(--primary);
+        }
+        
+        .tagline {
+            font-size: 22px;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            letter-spacing: 0.5px;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .price-tag .original {
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-left: 10px;
+            font-size: 0.9em;
+        }
+        
+        .features {
+            padding: 100px 0;
+            background-color: var(--dark-secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 80px;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background-color: rgba(30, 30, 30, 0.6);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 42px;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .feature-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+        
+        .feature-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        .privacy-banner {
+            background: linear-gradient(135deg, #121212 0%, #252525 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .privacy-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+        
+        .privacy-icon {
+            font-size: 60px;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .privacy-description {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+        
+        .early-access {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--dark);
+        }
+        
+        .early-access h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .early-access p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: var(--gray);
+        }
+        
+        footer {
+            background-color: #0A0A0A;
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            color: var(--gray);
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 40px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -45,16 +351,19 @@
                     <h3 class="feature-title">Smart Task Management</h3>
                     <p class="feature-description">Manage tasks, reminders, and meetings effortlessly with AI-powered organization and prioritization.</p>
                 </div>
+                
                 <div class="feature-card">
                     <div class="feature-icon">🗒️</div>
                     <h3 class="feature-title">Intelligent Notes</h3>
                     <p class="feature-description">Organize notes with AI-powered structure to quickly find and retrieve important information.</p>
                 </div>
+                
                 <div class="feature-card">
                     <div class="feature-icon">🔐</div>
                     <h3 class="feature-title">Complete Privacy</h3>
                     <p class="feature-description">Keep everything private — no cloud sync, just on-device with Face ID protection for sensitive information.</p>
                 </div>
+                
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
                     <h3 class="feature-title">Offline Productivity</h3>
@@ -92,7 +401,6 @@
                 <a href="https://kpappworx.github.io/Aiden/support.html">Support</a>
             </div>
             <p class="copyright">© 2025 Aiden AI by Kanthipriya (KP). All rights reserved.</p>
-
             <div style="margin-top: 20px; color: var(--gray); font-size: 14px;">
                 <p>Ready to experience the power of Aiden AI?</p>
                 <p>Visit our website: <a href="https://www.aidenai.com" style="color: var(--primary); text-decoration: none;">www.aidenai.com</a></p>
