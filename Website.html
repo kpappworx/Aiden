@@ -6,14 +6,18 @@
     <title>Aiden | Your Private, Offline Productivity Assistant</title>
     <style>
         :root {
-            --primary: #D4AF37; /* Gold */
-            --primary-light: #F4CE6A;
-            --primary-dark: #A6841C;
-            --dark: #121212; /* Near black */
-            --dark-secondary: #1E1E1E;
-            --light: #F8F8F8;
-            --gray: #888888;
-            --text-light: #EEEEEE;
+            --primary: #2563EB; /* Professional Blue */
+            --primary-light: #3B82F6;
+            --primary-dark: #1D4ED8;
+            --accent: #0EA5E9; /* Sky Blue */
+            --dark: #0F172A; /* Slate 900 */
+            --dark-secondary: #1E293B; /* Slate 800 */
+            --dark-tertiary: #334155; /* Slate 700 */
+            --light: #F8FAFC;
+            --gray: #94A3B8; /* Slate 400 */
+            --text-light: #F1F5F9; /* Slate 100 */
+            --gradient-start: #1E40AF;
+            --gradient-end: #0EA5E9;
         }
         
         * {
@@ -39,7 +43,8 @@
             background-color: var(--dark);
             color: white;
             padding: 20px 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.3);
+            backdrop-filter: blur(10px);
         }
         
         nav {
@@ -60,7 +65,7 @@
         }
         
         .logo-dot {
-            color: #FFFFFF;
+            color: var(--accent);
         }
         
         .nav-links {
@@ -76,15 +81,31 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-size: 14px;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
         }
         
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-light);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
         
         .cta-button {
-            background-color: var(--primary);
-            color: var(--dark);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
             border: none;
             padding: 12px 28px;
             border-radius: 12px;
@@ -96,24 +117,55 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-size: 14px;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
         }
         
         .cta-button:hover {
-            background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
         }
         
         .hero {
             padding: 100px 0 80px;
             text-align: center;
-            background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-secondary) 100%);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-secondary) 50%, var(--dark-tertiary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         h1 {
@@ -126,7 +178,10 @@
         }
         
         h1 span {
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .tagline {
@@ -137,18 +192,20 @@
         }
         
         .highlight {
-            color: var(--primary);
+            color: var(--primary-light);
             font-weight: 600;
         }
         
         .price-tag {
             display: inline-block;
-            background-color: rgba(212, 175, 55, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(14, 165, 233, 0.2) 100%);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 25px;
             margin-bottom: 30px;
-            color: var(--primary);
+            color: var(--primary-light);
             font-weight: 600;
+            border: 1px solid rgba(37, 99, 235, 0.3);
         }
         
         .price-tag .original {
@@ -160,14 +217,17 @@
         
         .features {
             padding: 100px 0;
-            background-color: var(--dark-secondary);
+            background: linear-gradient(180deg, var(--dark-secondary) 0%, var(--dark) 100%);
         }
         
         .section-title {
             text-align: center;
             font-size: 40px;
             margin-bottom: 80px;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: 1px;
         }
         
@@ -178,24 +238,43 @@
         }
         
         .feature-card {
-            background-color: rgba(30, 30, 30, 0.6);
-            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.4) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.4);
         }
         
         .feature-icon {
             font-size: 42px;
             margin-bottom: 25px;
-            color: var(--primary);
+            color: var(--primary-light);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
         }
         
         .feature-title {
@@ -213,23 +292,47 @@
         }
         
         .privacy-banner {
-            background: linear-gradient(135deg, #121212 0%, #252525 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             color: white;
             padding: 80px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .privacy-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         
         .privacy-title {
             font-size: 32px;
             margin-bottom: 20px;
-            color: var(--primary);
+            color: white;
             letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
         }
         
         .privacy-icon {
             font-size: 60px;
             margin-bottom: 30px;
-            color: var(--primary);
+            color: white;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
         }
         
         .privacy-description {
@@ -237,12 +340,14 @@
             max-width: 700px;
             margin: 0 auto 20px;
             line-height: 1.8;
+            position: relative;
+            z-index: 1;
         }
         
         .early-access {
             padding: 100px 0;
             text-align: center;
-            background-color: var(--dark);
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-secondary) 100%);
         }
         
         .early-access h2 {
@@ -259,10 +364,11 @@
         }
         
         footer {
-            background-color: #0A0A0A;
+            background-color: #020617;
             color: white;
             padding: 60px 0 40px;
             text-align: center;
+            border-top: 1px solid rgba(37, 99, 235, 0.2);
         }
         
         .footer-links {
@@ -279,10 +385,26 @@
             text-transform: uppercase;
             font-size: 14px;
             letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
         }
         
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--primary-light);
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
         }
         
         .copyright {
@@ -310,6 +432,22 @@
             
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .features {
+                padding: 60px 0;
+            }
+            
+            .privacy-banner {
+                padding: 60px 0;
+            }
+            
+            .early-access {
+                padding: 60px 0;
             }
         }
     </style>
@@ -403,10 +541,10 @@
             <p class="copyright">© 2025 Aiden AI by Kanthipriya (KP). All rights reserved.</p>
             <div style="margin-top: 20px; color: var(--gray); font-size: 14px;">
                 <p>Ready to experience the power of Aiden AI?</p>
-                <p>Visit our website: <a href="https://www.aidenai.com" style="color: var(--primary); text-decoration: none;">www.aidenai.com</a></p>
-                <p>Email us: <a href="mailto:info@aidenai.com" style="color: var(--primary); text-decoration: none;">info@aidenai.com</a></p>
+                <p>Visit our website: <a href="https://www.aidenai.com" style="color: var(--primary-light); text-decoration: none;">www.aidenai.com</a></p>
+                <p>Email us: <a href="mailto:info@aidenai.com" style="color: var(--primary-light); text-decoration: none;">info@aidenai.com</a></p>
                 <p>Call us: (555) 123-4567</p>
-                <p>Follow us on social media: <a href="https://www.linkedin.com/company/aidenai" style="color: var(--primary); text-decoration: none;">@AidenAI</a></p>
+                <p>Follow us on social media: <a href="https://www.linkedin.com/company/aidenai" style="color: var(--primary-light); text-decoration: none;">@AidenAI</a></p>
             </div>
         </div>
     </footer>
